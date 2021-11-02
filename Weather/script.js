@@ -121,7 +121,11 @@
             $("thead tr").prepend(location);
             $('tbody').html(weatherStr);
             // DT style
-            $('#weather-table').DataTable({});
+            $('#weather-table').DataTable({
+                "lengthMenu": [5],
+                "info": false,
+                "lengthChange": false
+            });
         })
         .fail(function(err) {
             console.log("資料讀取失敗" + err);
