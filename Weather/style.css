@@ -1,7 +1,3 @@
-body {
-    overflow-x: hidden;
-}
-
 thead th {
     font-family: lora, serif;
     font-style: italic;
@@ -12,9 +8,4 @@ thead th {
 img {
     width: 3rem;
     height: 3rem;
-}
-
-.dataTables_length,
-.dataTables_info {
-    display: none;
 }
