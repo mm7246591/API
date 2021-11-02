@@ -121,7 +121,7 @@
             $("thead tr").prepend(location);
             $('tbody').html(weatherStr);
             // DT style
-            $('#weather-table').DataTable({
+            $('#weatherTable').DataTable({
                 "lengthMenu": [5],
                 "info": false,
                 "lengthChange": false
