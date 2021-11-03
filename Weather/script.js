@@ -4,13 +4,10 @@
         .done(function(res) {
             // set parameter
             const data = res.records.locations[0].location;
-            let weatherStr = '';
+            let weatherStr;
             let dayStr = '';
             let date;
             let day;
-            let PoP;
-            let T;
-            let Wx;
             let location = `<th>地區</th>`;
             let dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
             let monthName = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec", ]
@@ -22,98 +19,116 @@
                     dayStr += `<th>${dayName[day.getDay()]},${day.getDate()}th ${monthName[day.getMonth()]},${day.getFullYear()}</th>`;
                 }
             }
+            /**
+             *
+             *
+             * @param {*} name
+             * @return {*} 
+             */
+            function getPic(name) {
+                let pic = "";
+                switch (name) {
+                    case "晴時多雲":
+                        pic = `<img src="./img/晴時多雲.svg">`;
+                        break;
+                    case "多雲時晴":
+                        pic = `<img src="./img/多雲時晴.svg">`;
+                        break;
+                    case "多雲":
+                        pic = `<img src="./img/多雲.svg">`;
+                        break;
+                    case "多雲時陰":
+                        pic = `<img src="./img/多雲時陰.svg">`;
+                        break;
+                    case "陰時多雲":
+                        pic = `<img src="./img/陰時多雲.svg">`;
+                        break;
+                    case "陰短暫雨":
+                        pic = `<img src="./img/陰短暫雨.svg">`;
+                        break;
+                    case "陰短暫陣雨":
+                        pic = `<img src="./img/陰短暫陣雨.svg">`;
+                        break;
+                    case "多雲短暫雨":
+                        pic = `<img src="./img/多雲短暫雨.svg">`;
+                        break;
+                    case "多雲短暫陣雨":
+                        pic = `<img src="./img/多雲短暫陣雨.svg">`;
+                        break;
+                    case "陰天":
+                        pic = `<img src="./img/陰天.svg">`;
+                        break;
+                    case "多雲時陰短暫雨":
+                        pic = `<img src="./img/多雲時陰短暫雨.svg">`;
+                        break;
+                    case "多雲時陰短暫陣雨":
+                        pic = `<img src="./img/多雲時陰短暫陣雨.svg">`;
+                        break;
+                    case "陰時多雲短暫雨":
+                        pic = `<img src="./img/陰時多雲短暫雨.svg">`;
+                        break;
+                    case "陰時多雲短暫陣雨":
+                        pic = `<img src="./img/陰時多雲短暫陣雨.svg">`;
+                        break;
+                }
+                return pic;
+            }
+
             // set weather data
             function getWeather() {
-                for (let i = 0; i < data.length; i++) {
-                    PoP = data[i].weatherElement[0].time;
-                    T = data[i].weatherElement[1].time;
-                    Wx = data[i].weatherElement[6].time;
-                    if (data[i].weatherElement[6].time.length === 14) {
-                        weatherStr += `
-                    <tr>
-                    <td>${data[i].locationName}</td>
-                    <td>
-                    <p>${Wx[0].elementValue[0].value} <img src="./img/${Wx[0].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[0].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[0].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[2].elementValue[0].value} <img src="./img/${Wx[2].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[2].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[2].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[4].elementValue[0].value} <img src="./img/${Wx[4].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[4].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[4].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[6].elementValue[0].value} <img src="./img/${Wx[6].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[6].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[6].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[8].elementValue[0].value} <img src="./img/${Wx[8].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[8].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[8].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[10].elementValue[0].value} <img src="./img/${Wx[10].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[10].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[10].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[12].elementValue[0].value} <img src="./img/${Wx[12].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[12].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[12].elementValue[0].value} %</p>
-                    </td>
-                    </tr>`
-                    } else if (data[i].weatherElement[6].time.length === 15)
-                        weatherStr += `
-                    <tr>
-                    <td>${data[i].locationName}</td>
-                    <td>
-                    <p>${Wx[0].elementValue[0].value} <img src="./img/${Wx[0].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[0].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[0].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[2].elementValue[0].value} <img src="./img/${Wx[2].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[2].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[2].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[4].elementValue[0].value} <img src="./img/${Wx[4].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[4].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[4].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[6].elementValue[0].value} <img src="./img/${Wx[6].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[6].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[6].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[8].elementValue[0].value} <img src="./img/${Wx[8].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[8].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[8].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[10].elementValue[0].value} <img src="./img/${Wx[10].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[10].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[10].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[12].elementValue[0].value} <img src="./img/${Wx[12].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[12].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[12].elementValue[0].value} %</p>
-                    </td>
-                    <td>
-                    <p>${Wx[14].elementValue[0].value} <img src="./img/${Wx[14].elementValue[0].value}.svg"></p>
-                    <p>平均氣溫：${T[14].elementValue[0].value} ℃</p>
-                    <p>降雨機率：${PoP[14].elementValue[0].value} %</p>
-                    </td>
-                    </tr>`
-                }
+                weatherStr = "";
+                data.forEach((location) => {
+                    weatherStr += "<tr>";
+                    weatherStr += `<td>${location.locationName}</td>`;
+                    const info = {
+                        T: [],
+                        Wx: [],
+                        PoP12h: [],
+                    };
+
+                    location.weatherElement.forEach((elment) => {
+                        if (elment.elementName === "T") {
+                            info.T = elment.time;
+                        }
+                        if (elment.elementName === "Wx") {
+                            info.Wx = elment.time;
+                        }
+                        if (elment.elementName === "PoP12h") {
+                            info.PoP12h = elment.time;
+                        }
+                    });
+                    if (info.T.length === 15) {
+                        weatherStr += ` 
+                            <td>
+                                <p>${info.Wx[0].elementValue[0].value} ${getPic(info.Wx[0].elementValue[0].value)}</p>
+                                <p>平均氣溫：${info.T[0].elementValue[0].value} ℃</p>
+                                <p>降雨機率：${info.PoP12h[0].elementValue[0].value === " "? "0": info.PoP12h[0].elementValue[0].value} %</p>
+                            </td>`;
+                        for (let i = 1; i < info.T.length; i += 2) {
+                            const pic = getPic(info.Wx[i].elementValue[0].value);
+                            weatherStr += ` 
+                            <td>
+                                <p>${info.Wx[i].elementValue[0].value} ${pic}</p>
+                                <p>平均氣溫：${info.T[i].elementValue[0].value} ℃</p>
+                                <p>降雨機率：${info.PoP12h[i].elementValue[0].value === " "? "0": info.PoP12h[i].elementValue[0].value} %</p>
+                            </td>`;
+                        }
+                        weatherStr += `</tr>`;
+                    } else {
+                        if (info.T.length === 14) {
+                            for (let i = 0; i < info.T.length; i += 2) {
+                                const pic = getPic(info.Wx[i].elementValue[0].value);
+                                weatherStr += ` 
+                                <td>
+                                    <p>${info.Wx[i].elementValue[0].value} ${pic}</p>
+                                    <p>平均氣溫：${info.T[i].elementValue[0].value} ℃</p>
+                                    <p>降雨機率：${info.PoP12h[i].elementValue[0].value === " "? "0": info.PoP12h[i].elementValue[0].value} %</p>
+                                </td>`;
+                            }
+                            weatherStr += `</tr>`;
+                        }
+                    }
+                });
             };
             getDay();
             getWeather();
