@@ -4,6 +4,11 @@
         .done(function(res) {
             // set parameter
             const data = res.records.locations[0].location;
+            const info = {
+                T: [],
+                Wx: [],
+                PoP12h: [],
+            };
             let weatherStr;
             let dayStr = '';
             let date;
@@ -80,12 +85,6 @@
                 data.forEach((location) => {
                     weatherStr += "<tr>";
                     weatherStr += `<td>${location.locationName}</td>`;
-                    const info = {
-                        T: [],
-                        Wx: [],
-                        PoP12h: [],
-                    };
-
                     location.weatherElement.forEach((elment) => {
                         if (elment.elementName === "T") {
                             info.T = elment.time;
@@ -115,18 +114,16 @@
                         }
                         weatherStr += `</tr>`;
                     } else {
-                        if (info.T.length === 14) {
-                            for (let i = 0; i < info.T.length; i += 2) {
-                                const pic = getPic(info.Wx[i].elementValue[0].value);
-                                weatherStr += ` 
+                        for (let i = 0; i < info.T.length; i += 2) {
+                            const pic = getPic(info.Wx[i].elementValue[0].value);
+                            weatherStr += ` 
                                 <td>
                                     <p>${info.Wx[i].elementValue[0].value} ${pic}</p>
                                     <p>平均氣溫：${info.T[i].elementValue[0].value} ℃</p>
                                     <p>降雨機率：${info.PoP12h[i].elementValue[0].value === " "? "0": info.PoP12h[i].elementValue[0].value} %</p>
                                 </td>`;
-                            }
-                            weatherStr += `</tr>`;
                         }
+                        weatherStr += `</tr>`;
                     }
                 });
             };
