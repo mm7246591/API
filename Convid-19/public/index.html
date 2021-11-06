@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>疫情即時資訊</title>
+</head>
+
+<body>
+    <div class="container-fluid ">
+        <h2 class="text-muted text-center"></h2>
+        <div class="chart-container" style=" height:50vh; width:100%">
+            <canvas id="myChart"></canvas>
+        </div>
+        <table class="table table-hover responsive nowrap " id="convidTable" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>國家</th>
+                    <th>日期</th>
+                    <th>總確診數</th>
+                    <th>新增確診數</th>
+                    <th>總死亡數</th>
+                    <th>新增死亡數</th>
+                    <th>疫苗總接種總劑數</th>
+                    <th>疫苗總接種人數</th>
+                    <th>疫苗新增接種劑數</th>
+                    <th>解除隔離數</th>
+                    <th>解封指數</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+    <script src="./jquery-3.6.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
+    <script src="./Global.js"></script>
+    <script crossorigin="anonymous" src="./TW.js"></script>
+</body>
+
+</html>
