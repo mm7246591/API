@@ -1,5 +1,0 @@
-# How to use this API
-
-## you need to npm install node.js express and cors
-
-###### I suggest that you can download nodemon because it can monitor your code 
