@@ -51,6 +51,9 @@
                     case "陰短暫雨":
                         pic = `<img src="./img/陰短暫雨.svg">`;
                         break;
+                    case "陰陣雨":
+                        pic = `<img src="./img/陰短暫雨.svg">`;
+                        break;
                     case "陰短暫陣雨":
                         pic = `<img src="./img/陰短暫陣雨.svg">`;
                         break;
@@ -75,6 +78,7 @@
                     case "陰時多雲短暫陣雨":
                         pic = `<img src="./img/陰時多雲短暫陣雨.svg">`;
                         break;
+
                 }
                 return pic;
             }
