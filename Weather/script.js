@@ -81,7 +81,21 @@
                     case "陰時多雲短暫陣雨":
                         pic = `<img src="./img/陰時多雲短暫陣雨.svg">`;
                         break;
-
+                    case "陰短暫陣雨或雷雨":
+                        pic = `<img src="./img/陰短暫陣雨或雷雨.svg">`;
+                        break;
+                    case "陰時多雲短暫陣雨或雷雨":
+                        pic = `<img src="./img/陰短暫陣雨或雷雨.svg">`;
+                        break;
+                    case "多雲時陰短暫陣雨或雷雨":
+                        pic = `<img src="./img/陰短暫陣雨或雷雨.svg">`;
+                        break;
+                    case "多雲午後短暫雷陣雨":
+                        pic = `<img src="./img/多雲午後短暫雷陣雨.svg">`;
+                        break;
+                    case "多雲短暫陣雨或雷雨":
+                        pic = `<img src="./img/多雲短暫陣雨或雷雨.svg">`;
+                        break;
                 }
                 return pic;
             }
